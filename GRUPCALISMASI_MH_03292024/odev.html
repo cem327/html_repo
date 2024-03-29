@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+    .input-container{
+        display: flex;
+        margin-left: 10%;
+        width: 80%;
+        height: 300px;
+        border-radius: 25px;
+        border: 4px solid gray;
+        box-shadow: 2vh;
+
+    }
+    .tablo{
+        display: flex;
+        margin-top: 30px;
+        min-height: 300px;
+
+    }
+    .col{
+        display: inline-flex;
+        flex-direction: column;
+        height: 100%;
+        contain: content;
+        flex: 7;
+
+    }
+    .col.v2{
+        display: inline-flex;
+        align-items: center;
+        padding: 15px;
+    }
+    .col-width-2{
+        flex: 3;
+        padding: 15px;
+        contain: content;
+    }
+    .row{
+        display: inline-flex;
+        flex-direction: row;
+        contain: content;
+        width: 99%;
+        height: 100%;
+        border-radius: 25px;
+    }
+    .textbox{
+        display: inline-flex;
+        border-radius: 5px;
+        
+        width: 90%;
+        height: 33%;  
+    
+    }
+    .textbox.v2{
+        width: 95%;
+        
+    }
+    /* MESLEK SECIM SATIRI */
+    .textbox.v3{
+        height: 40%;
+        
+    }
+    /* UST FORUM TUM LABELLAR */
+    .label.left{
+        text-align: left;
+        width: 90%;
+        font-weight: 600;
+    }
+    /* Adres SATIRI */
+    .label.left.v2{
+        width: 95%;
+    }
+    .button-v1{
+        display: inline-block;
+        text-align: center;
+        border-radius: 25px;
+        margin-top: 45px;
+        height: 50px;
+        width: 80%;
+        align-items: center;
+        align-self: center;
+        justify-self: unset;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="input-container">
+        <div class="col">
+            <div class="row">
+                <div class="col v2">
+                    <label for="id" class="label left">Id</label>
+                    <input type="text" name="" id="id" class="textbox">
+                </div>
+                <div class="col v2">
+                    <label for="id" class="label left">Telefon</label>
+                    <input type="text" name="" id="telefon" class="textbox">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col v2">
+                    <label for="id" class="label left">Ad soyad</label>
+                    <input type="text" name="" id="adsoyad" class="textbox">
+                </div>
+                <div class="col v2">
+                    <label for="id" class="label left">Meslek</label>
+                    <select name="" class="textbox v3" id="meslek">
+                        <option value="Asker">Asker</option>
+                        <option value="Doktor">Doktor</option>
+                        <option value="Ciftci">Ciftci</option>
+                        <option value="Basbakan">Basbakan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col v2">
+                    <label for="id"  class="label left v2" >Adres</label>
+                    <input type="text" name="" id="adres" class="textbox v2">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-width-2">
+            <div class="row-2">
+                <button class="button-v1" onclick="satirEkle()">EKLE</button>
+            </div>
+            <div class="row-2">
+                <button class="button-v1" onclick="temizle()">TEMIZLE</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tablo">
+        <table border="2" width="100%" id="table">
+
+            <thead>
+                <tr>
+                    <th accesskey="1">id</th>
+                    <th accesskey="2">ad soyad</th>
+                    <th accesskey="3">telefon</th>
+                    <th accesskey="4">meslek</th>
+                    <th accesskey="5">adres</th>
+                    <th accesskey="1">islemler</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+    
+    </div>
+    <script>
+
+        function satirEkle() {
+            var table = document.getElementById("table");
+
+            // Get input field values
+            var id = document.getElementById("id").value;
+            var telefon = document.getElementById("telefon").value;
+            var adSoyad = document.getElementById("adsoyad").value;
+            var meslekSelect = document.getElementById("meslek");
+            var meslek = meslekSelect.options[meslekSelect.selectedIndex].value;
+            var adres = document.getElementById("adres").value;
+
+            // Insert a new row
+            var newRow = table.insertRow();
+
+            // Insert cells into the new row and set their content
+            var cellId = newRow.insertCell(0);
+            cellId.textContent = id;
+
+            var cellAdSoyad = newRow.insertCell(1);
+            cellAdSoyad.textContent = adSoyad;
+
+            var cellTelefon = newRow.insertCell(2);
+            cellTelefon.textContent = telefon;
+
+            var cellMeslek = newRow.insertCell(3);
+            cellMeslek.textContent = meslek;
+
+            var cellAdres = newRow.insertCell(4);
+            cellAdres.textContent = adres;
+
+            var button1 = document.createElement('button');
+            button1.textContent = 'Duzenle';
+            button1.onclick = function() {
+                duzenle(this);
+            };
+
+            // Create the second button
+            var button2 = document.createElement('button');
+            button2.textContent = 'Sil';
+            button2.onclick = function() {
+                sil(this);
+            };
+
+            var cellButton = newRow.insertCell(5);
+            cellButton.appendChild(button1);
+            cellButton.appendChild(button2);
+
+  
+        }
+        function temizle(satirIndex){
+            document.getElementById("id").value = "";
+            document.getElementById("telefon").value = "";
+            document.getElementById("adsoyad").value = "";
+            document.getElementById("meslek").value = "";
+            document.getElementById("adres").value = "";
+
+        }
+        function duzenle(button) {
+            var tableRow = button.parentNode.parentNode; // Düzenlenecek satırın elementini al
+            var satirIndex = tableRow.rowIndex - 1; // Satırın indeksini hesapla
+            var cells = tableRow.cells;    // Satırın hücrelerindeki metin içeriklerini düzenlenebilir input alanlarına çevir
+            for (var i = 0; i < cells.length - 1; i++) { // Son hücre (işlemler) hariç her hücreyi dolaş
+                var cellText = cells[i].textContent; // Hücrenin mevcut içeriğini al
+                var input = document.createElement("input"); // Yeni bir input alanı oluştur
+                input.type = "text"; // Input alanının türünü belirle
+                input.value = cellText; // Input alanının değerini mevcut hücre içeriğiyle doldur
+                cells[i].textContent = ""; // Hücrenin içeriğini temizle
+                cells[i].appendChild(input); // Input alanını hücreye ekle
+            }
+
+            // İşlemler hücresinde düzenleme butonunu gizle
+            cells[cells.length - 1].querySelector("button").style.textContent = "onayla";
+            cells[cells.length - 1].querySelector("button").style.textContent
+
+
+        }
+        function onayla() {
+        var table = document.getElementById("myTable");
+        var rows = table.rows;
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].cells;
+            for (var j = 0; j < cells.length - 1; j++) {
+                var input = cells[j].querySelector("input");
+                if (input) {
+                    cells[j].textContent = input.value;
+                    // Burada verileri işleyebilir veya sunucuya gönderebilirsiniz.
+                }
+            }
+            // Düzenle butonunu geri getir
+            cells[cells.length - 1].querySelector("button").style.display = "block";
+        }
+    }
+        
+    </script>
+</body>
+</html>
