@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <h1>Dom - Document Bilesenleri </h1>
+
+    <a id="link" class="link" href="https://www.google.com">google a git</a>
+
+    <script>
+        var link = document.querySelector('a');
+        // link = document.getElementById('link');
+        // link = document.getElementsByClassName('link');
+        console.log(link);
+        link.innerText = 'Muhammet hoca ile google a git';
+        link.style.color = 'white';
+        link.style.backgroundColor = 'black';
+        let left=10;
+        setInterval(()=>{
+
+            link.style.marginLeft = left+'px';
+            left++;
+            console.log(timer);
+
+        },1000)
+    </script>
+</body>
+</html>

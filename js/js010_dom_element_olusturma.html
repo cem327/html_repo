@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Olusturma</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <button onclick="ekle()">Bilesen Ekleme</button>
+    <input type="button" value="">
+    <script>
+        function ekle(){
+            let li = document.createElement('li');
+            li.textContent = "Java";
+            let div = document.getElementById('root');
+            div.appendChild(li);
+        }
+    </script>
+</body>
+</html>

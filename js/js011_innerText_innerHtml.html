@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnerText & InnerHTML</title>
+</head>
+<body>
+    <p>
+        burada bir metin olacaktir, sonra vurgulanacak metin gelir.
+        <strong>Java Dunyasi</strong>
+        sonrasinda hersey ayni...
+    </p>
+
+    <div id="container">
+
+
+    </div>
+    <script>
+        var p = document.querySelector('p');
+        console.log(p.innerHTML);
+        console.log(p.innerText);
+
+        let div = document.getElementById('container');
+        div.innerText = "<h1>Muhammet</h1>";
+    </script>
+</body>
+</html>

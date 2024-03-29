@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Örnek</title>
+    <style>
+        .main-container{
+            display: flex;
+            flex-direction: row;
+        }
+        .menu{
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            height: 300px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: first baseline;
+            flex: 8;
+            height: 300px;
+        }
+        div{
+            border: 2px solid brown;
+            margin: 10px;
+            border-radius: 20px;
+        }
+        button{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Örnek</h1>
+    <div class="main-container">
+        <div class="menu">
+            <button id = "1" onclick="ekle('input')">Input text Ekle</button>
+            <button id = "2" onclick="ekle('pwd')">Input password Ekle</button>
+            <button id = "3" onclick="ekle('radio')">Input radio Ekle</button>
+            <button id = "4" onclick="ekle('button')">Button Ekle</button>
+            <button id = "5" onclick="ekle('img')">img Ekle</button>
+        </div>
+        <div class="container" id="container"></div>
+    </div>
+    <script>
+        function ekle(elementType){
+            /**
+             * switch...case
+             * createElement
+             * appendChild
+             */
+
+            switch(elementType){
+                case 'input' : element = document.createElement('input'); element.type = 'text'; break;
+                case 'pwd' : element = document.createElement('input'); element.setAttribute('type','pssword'); break;
+                case 'radio' : element = document.createElement('input'); element.setAttribute('type','radio'); break;
+                case 'button' : element = document.createElement('input'); element.type = 'button'; break;
+                case 'img' : 
+                    element = document.createElement('img');
+                    element.setAttribute('src','https://picsum.photos/200/200');
+                    element.width = 500;
+                    element.height = 200;
+                    break;
+                default:break;
+            }
+            let container = document.getElementById('container');
+            container.appendChild(element)
+        }
+    </script>
+</body>
+</html>
